@@ -45,14 +45,62 @@ android {
         versionName flutterVersionName
         testInstrumentationRunner "android.support.test.runner.AndroidJUnitRunner"
     }
-    buildTypes {
-        release {
-            // TODO: Add your own signing config for the release build.
-            // Signing with the debug keys for now, so `flutter run --release` works.
-            signingConfig signingConfigs.debug
+    signingConfigs {
+        debug {
+            //miaomiao_keystore.jks文件最好放在项目app目录下
+            storeFile file("flutter.jks")
+            storePassword "mama199002"
+            keyAlias "flutter"
+            keyPassword "mama199002"
         }
-
+        release {
+            //miaomiao_keystore.jks文件最好放在项目app目录下
+            storeFile file("flutter.jks")
+            storePassword "mama199002"
+            keyAlias "flutter"
+            keyPassword "mama199002"
+        }
     }
+
+//    buildTypes {
+//        release {
+//            // TODO: Add your own signing config for the release build.
+//            // Signing with the debug keys for now, so `flutter run --release` works.
+//            signingConfig signingConfigs.debug
+////            storeFile file("/用户/NN/桌面/NN/Fluttre/flutter.jks")
+////            storePassword "mama199002"
+////            keyAlias "flutter"
+////            keyPassword "mama199002"
+//        }
+//
+//    }
+
+    buildTypes {
+        debug {
+            // 服务器配置
+//            buildConfigField "String", "SERVERHEAD", "\"http://110.11.11.00/miaomiao/\""
+//            //是否混淆
+//            minifyEnabled false
+//            zipAlignEnabled true
+//            shrinkResources false
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.debug
+
+        }
+        release {
+//            // 正式服务器
+//            buildConfigField "String", "SERVERHEAD", "\"http://miaomiao.com/miaomiao/\""
+//            //混淆
+//            minifyEnabled true
+//            zipAlignEnabled true//内存对齐
+//            // 移除无用的resource文件
+//            shrinkResources true
+//            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            //签名
+            signingConfig signingConfigs.release
+        }
+    }
+
 }
 
 flutter {
